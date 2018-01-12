@@ -1,0 +1,6 @@
+{
+    "defaultSettings": {
+        "sound": "./singingbowl.mp3",
+        "timerDuration": 10
+    }
+}
