@@ -5,6 +5,7 @@ A simple CLI meditation timer
 ```
 # Clone the repo
 git clone https://github.com/theschmocker/samatha.git
+cd ./samatha
 
 # Install dependencies, and set up global command
 npm install && npm link
