@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "description": "A simple CLI meditation timer",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [
     "meditation",
     "breathing",
@@ -15,6 +13,11 @@
   "author": "Jacob Schmocker",
   "license": "MIT",
   "dependencies": {
+    "clear": "0.0.1",
     "play-sound": "^1.1.2"
+  },
+  "bin": {
+    "meditate": "./index.js",
+    "samatha": "./index.js"
   }
 }
