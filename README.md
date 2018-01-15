@@ -17,4 +17,4 @@ npm install && npm link
 
 **or**
 
-`mediate NUMBER` where NUMBER is any length of time in minutes
+`mediate NUMBER` - where NUMBER is any length of time in minutes
