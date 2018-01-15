@@ -1,22 +1,20 @@
+#! /usr/bin/env node
 const player = require('play-sound')(opts = {});
-const clearScreen = require('./util/clearScreen');
+const cli = require('./util/cli');
+const clear = require('clear');
 
-function printTimeLeft(duration, elapsed) {
-    const minutes = Math.floor((duration - elapsed) / 60);
-    let seconds = Math.floor((duration - elapsed) % 60);
+const config = require('./config.json');
 
-    // Make sure that (minutes):00 is printed when seconds === 0
-    seconds = (seconds !== 0) ? seconds : '00';
-
-    console.log(`${minutes}:${seconds}`);
+function alarm() {
+    player.play(config.settings.sound);
 }
 
 function meditationTimer(duration, callback) {
     const durationInSeconds = duration * 60;
     let timeElapsed = 0;
 
-    clearScreen();
-    printTimeLeft(durationInSeconds, timeElapsed);
+    cli.clearScreen();
+    cli.printTimeLeft(durationInSeconds, timeElapsed);
 
     let timer = setInterval(() => {
         timeElapsed += 1;
@@ -24,10 +22,12 @@ function meditationTimer(duration, callback) {
             clearInterval(timer);
             console.log(`The timer has finished. You meditated for ${timeElapsed / 60} minutes. `);
             if (callback) callback();
+            return;
         }
-        clearScreen();
-        printTimeLeft(durationInSeconds, timeElapsed);
+        clear();
+        cli.printTimeLeft(durationInSeconds, timeElapsed);
     }, 1000);
 }
 
-meditationTimer(1.33);
+const time = process.argv[2] || config.settings.timerDuration;
+meditationTimer(time, alarm);
