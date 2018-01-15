@@ -20,7 +20,8 @@ function meditationTimer(duration, callback) {
         timeElapsed += 1;
         if (timeElapsed == durationInSeconds) {
             clearInterval(timer);
-            console.log(`The timer has finished. You meditated for ${timeElapsed / 60} minutes. `);
+            clear();
+            console.log(`The timer has finished. You meditated for ${timeElapsed / 60} ${(timeElapsed / 60) === 1 ? 'minute' : 'minutes'}`);
             if (callback) callback();
             return;
         }
