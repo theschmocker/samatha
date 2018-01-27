@@ -26,10 +26,7 @@ module.exports = (function MeditationTimer() {
     function end(alarm) {
         clearInterval(interval);
         clear();
-
-        // TODO: Format this output more nicely
-        console.log(`${timeElapsed === durationInSeconds ? 'The timer has finished.' : 'The timer was stopped early.'} You meditated for ${timeElapsed / 60} ${(timeElapsed / 60) === 1 ? 'minute' : 'minutes'}`);
-
+        cli.timerFinishedDisplay(timeElapsed, durationInSeconds);
         if (alarm) alarm();
     }
 

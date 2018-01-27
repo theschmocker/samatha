@@ -1,12 +1,23 @@
-function printTimeLeft(duration, elapsed) {
-    let minutes = Math.floor((duration - elapsed) / 60);
-    let seconds = Math.floor((duration - elapsed) % 60);
+function formatTime(time) {
+    let minutes = Math.floor((time) / 60);
+    let seconds = Math.floor((time) % 60);
 
     // Formatting
     minutes = (minutes > 10) ? minutes : '0' + minutes;
     seconds = (seconds > 10) ? seconds : '0' + seconds;
 
-    console.log(`${minutes}:${seconds}`);
+    return `${minutes}:${seconds}`;
+}
+function printTimeLeft(duration, elapsed) {
+    const timeLeft = duration - elapsed;
+
+    console.log(formatTime(timeLeft));
+}
+
+function timerFinishedDisplay(timeElapsed, durationInSeconds) {
+    const timerEndedEarly = timeElapsed !== durationInSeconds;
+        console.log(`${timerEndedEarly ? 'The timer was stopped early.' : 'The timer has finished'} You meditated for ${formatTime(timeElapsed)}.`);
+
 }
 
 function clearScreen() {
@@ -18,4 +29,4 @@ function clearScreen() {
     readline.clearScreenDown(process.stdout);
 }
 
-module.exports = { printTimeLeft, clearScreen };
+module.exports = { printTimeLeft, clearScreen, timerFinishedDisplay };
